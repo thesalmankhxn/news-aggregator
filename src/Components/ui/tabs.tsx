@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { Select } from "../Select";
 
 type Tab = {
   title: string;
@@ -40,7 +41,7 @@ export const Tabs = ({
     <>
       <div
         className={cn(
-          "flex flex-row items-center justify-start [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full",
+          "flex flex-row items-center justify-start [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full h-[60px]",
           containerClassName
         )}
       >
@@ -73,6 +74,10 @@ export const Tabs = ({
             </span>
           </button>
         ))}
+
+        <div className="ml-auto mr-[4px]">
+          <Select />
+        </div>
       </div>
       <FadeInDiv
         tabs={tabs}

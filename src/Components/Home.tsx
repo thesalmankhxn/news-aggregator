@@ -2,6 +2,7 @@ import { PageLayoutCN } from "@/Layouts";
 import { Card } from "./Card";
 import { cn } from "@/lib/utils";
 import { Globe } from "../../src/Components/Globe";
+import { Sources } from "@/api/Models";
 
 const Home = () => {
   return (
@@ -38,27 +39,27 @@ const NewsApiProviders = [
       "Locate articles and breaking news headlines from news sources and blogs across the web with our JSON API.",
     image: "",
     authorAvatar: "",
-    link: "newsplus",
+    source: Sources.news,
   },
   {
-    author: "BBC NEWS",
+    author: "The New York Times",
     date: "",
     title: "Search worldwide news with code",
     description:
       "Locate articles and breaking news headlines from news sources and blogs across the web with our JSON API.",
     image: "",
     authorAvatar: "",
-    link: "bbc",
+    source: Sources.nyTimes,
   },
   {
-    author: "GUARDIAN NEWS",
+    author: "The GUARDIAN",
     date: "",
     title: "Search worldwide news with code",
     description:
       "Locate articles and breaking news headlines from news sources and blogs across the web with our JSON API.",
     image: "",
     authorAvatar: "",
-    link: "guardian",
+    source: Sources.guardian,
   },
 ];
 

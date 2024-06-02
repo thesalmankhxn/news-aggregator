@@ -1,14 +1,10 @@
-import { TabsDemo } from "./Tab";
-import { useSearchParams } from "react-router-dom";
+import { CategoryTabs } from "./CategoryTabs";
 
 const NewsDetail = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const aggregator = searchParams.get("aggregator");
-  console.log(aggregator);
   return (
     <>
       <div>
-        <TabsDemo />
+        <CategoryTabs />
       </div>
     </>
   );

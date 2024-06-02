@@ -5,25 +5,28 @@ import NotFound from "./Components/NotFound";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import NewsDetail from "./Components/NewsDetail";
+import { SearchFilterProvider } from "./Components/Context";
 
 function App() {
   return (
-    <main className="relative bg-gray-2 min-h-screen flex flex-col">
-      <div className="h-full">
-        <Navbar />
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/news" element={<NewsDetail />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Router>
-      </div>
+    <Router>
+      <SearchFilterProvider>
+        <main className="relative bg-gray-2 min-h-screen flex flex-col">
+          <div className="h-full">
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/news" element={<NewsDetail />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
 
-      <div className="pt-[20px] mt-auto">
-        <Footer />
-      </div>
-    </main>
+          <div className="pt-[20px] mt-auto">
+            <Footer />
+          </div>
+        </main>
+      </SearchFilterProvider>
+    </Router>
   );
 }
 
