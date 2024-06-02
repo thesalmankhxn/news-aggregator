@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav
       className={cn(
         PageLayoutCN.container,
-        "flex justify-between items-center pb-16"
+        "flex justify-between items-center"
       )}
     >
       <div className="text-[20px] font-bold">SK77 NEWS+</div>

@@ -1,17 +1,17 @@
 import { PageLayoutCN } from "@/Layouts";
 import { Card } from "./Card";
 import { cn } from "@/lib/utils";
-import { Globe } from "./ui/Globe/Globe";
+import { Globe } from "../../src/Components/Globe";
 
 const Home = () => {
   return (
-    <section className={cn(PageLayoutCN.sectionContainer, "!pt-0")}>
+    <section className={cn(PageLayoutCN.sectionContainer, "!pt-16")}>
       <div className="text-center text-6xl min-md:text-7xl font-semibold relative">
-        <h2 className="mb-4">
+        <h2 className="mb-4 relative z-50 inline-block">
           A world of <span className="text-underline-gradient">journalism</span>
           .
         </h2>
-        <h2 className="text-4xl pb-20">
+        <h2 className="text-4xl pb-20 relative z-50 inline-block">
           The stories you need to hear. Everywhere you want to listen.
         </h2>
 

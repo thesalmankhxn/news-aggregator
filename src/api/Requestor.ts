@@ -29,12 +29,7 @@ const intercept401 = (err: any) => {
   throw err;
 };
 
-export const Get = async <T>(
-  path: string,
-  json?: any,
-  queryParams?: any,
-  options?: any
-) => {
+export const Get = async <T>(path: string, json?: any, queryParams?: any) => {
   let response: Response<T> = {};
   const params = FilterQueryParams(queryParams);
   const request = await wretch(`${RequestDefaults.baseUrl}${path}`)

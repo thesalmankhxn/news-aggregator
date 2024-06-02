@@ -4,15 +4,17 @@ import Home from "./Components/Home";
 import NotFound from "./Components/NotFound";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import NewsDetail from "./Components/NewsDetail";
 
 function App() {
   return (
-    <main className="relative">
-      <div className="bg-gray-2 h-full min-h-screen flex flex-col">
+    <main className="relative min-h-screen">
+      <div className="bg-gray-2 h-full flex flex-col">
         <Navbar />
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/news" element={<NewsDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>

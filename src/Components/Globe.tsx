@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { World } from "./globeUi";
+import { World } from "../Components/ui/globeUi";
 
 export function Globe() {
   const globeConfig = {
