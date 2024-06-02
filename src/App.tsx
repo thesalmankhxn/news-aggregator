@@ -8,8 +8,8 @@ import NewsDetail from "./Components/NewsDetail";
 
 function App() {
   return (
-    <main className="relative min-h-screen">
-      <div className="bg-gray-2 h-full flex flex-col">
+    <main className="relative bg-gray-2 min-h-screen flex flex-col">
+      <div className="h-full">
         <Navbar />
         <Router>
           <Routes>
@@ -18,10 +18,10 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
+      </div>
 
-        <div className="pt-[20px] mt-auto">
-          <Footer />
-        </div>
+      <div className="pt-[20px] mt-auto">
+        <Footer />
       </div>
     </main>
   );

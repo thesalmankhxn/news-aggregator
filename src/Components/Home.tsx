@@ -21,8 +21,8 @@ const Home = () => {
       </div>
 
       <div className="flex justify-evenly items-center flex-wrap gap-4 max-w-[1000px] mx-auto mt-[100px]">
-        {NewsApiProviders?.map((np) => (
-          <Card data={np} />
+        {NewsApiProviders?.map((np, id) => (
+          <Card key={id} data={np} />
         ))}
       </div>
     </section>
@@ -38,6 +38,7 @@ const NewsApiProviders = [
       "Locate articles and breaking news headlines from news sources and blogs across the web with our JSON API.",
     image: "",
     authorAvatar: "",
+    link: "newsplus",
   },
   {
     author: "BBC NEWS",
@@ -47,6 +48,7 @@ const NewsApiProviders = [
       "Locate articles and breaking news headlines from news sources and blogs across the web with our JSON API.",
     image: "",
     authorAvatar: "",
+    link: "bbc",
   },
   {
     author: "GUARDIAN NEWS",
@@ -56,6 +58,7 @@ const NewsApiProviders = [
       "Locate articles and breaking news headlines from news sources and blogs across the web with our JSON API.",
     image: "",
     authorAvatar: "",
+    link: "guardian",
   },
 ];
 
