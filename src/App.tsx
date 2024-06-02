@@ -1,40 +1,53 @@
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
-import { Globe } from "./Components/ui/Globe/globe";
+import Home from "./Components/Home";
+import NotFound from "./Components/NotFound";
+import Navbar from "./Components/Navbar";
+import Footer from "./Components/Footer";
 
 function App() {
   return (
-    <main>
-      <h1 className="text-[20px] font-bold montserrat">SK77 NEWS+</h1>
+    <main className="relative">
+      <div className="bg-gray-2 h-full min-h-screen flex flex-col">
+        <Navbar />
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
 
-      <h2>The stories you need to hear. Everywhere you want to listen.</h2>
-
-      <Globe
-        globeConfig={{
-          pointSize: undefined,
-          globeColor: undefined,
-          showAtmosphere: undefined,
-          atmosphereColor: undefined,
-          atmosphereAltitude: undefined,
-          emissive: undefined,
-          emissiveIntensity: undefined,
-          shininess: undefined,
-          polygonColor: undefined,
-          ambientLight: undefined,
-          directionalLeftLight: undefined,
-          directionalTopLight: undefined,
-          pointLight: undefined,
-          arcTime: undefined,
-          arcLength: undefined,
-          rings: undefined,
-          maxRings: undefined,
-          initialPosition: undefined,
-          autoRotate: undefined,
-          autoRotateSpeed: undefined,
-        }}
-        data={[]}
-      />
+        <div className="pt-[20px] mt-auto">
+          <Footer />
+        </div>
+      </div>
     </main>
   );
+}
+
+{
+  /* <motion.div
+          initial={{
+            opacity: 0,
+            y: 20,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+          }}
+          transition={{
+            duration: 1,
+          }}
+          className="div"
+        >
+          <h2 className="text-center text-xl md:text-4xl font-bold text-black dark:text-white">
+            We sell soap worldwide
+          </h2>
+          <p className="text-center text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 max-w-md mt-2 mx-auto">
+            This globe is interactive and customizable. Have fun with it, and
+            don&apos;t forget to share it. :)
+          </p>
+        </motion.div> */
 }
 
 export default App;
