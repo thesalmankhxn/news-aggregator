@@ -11,12 +11,14 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { data } from "@/Constants/DemoData";
 
 const NewsList = () => {
-  const [inputValue, setInputValue] = useState<string>("");
-
   const { filter, updateSearchParams, searchParams } = useSearchFilter();
 
   const source = searchParams.get("source");
   const category = searchParams.get("category");
+  const date = searchParams.get("date");
+  const query = searchParams.get("query");
+
+  const [inputValue, setInputValue] = useState<string>(query || "");
 
   const handleSourceSelect = (value: any) => {
     updateSearchParams({ ...filter, source: value });
@@ -58,6 +60,7 @@ const NewsList = () => {
         />
         <DatePicker
           selectDate={(date: string) => updateSearchParams({ ...filter, date })}
+          defaultValue={new Date(date)}
         />
 
         <button

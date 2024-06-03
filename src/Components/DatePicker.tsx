@@ -13,10 +13,12 @@ import {
 
 export function DatePicker({
   selectDate,
+  defaultValue,
 }: {
   selectDate: (date: string) => void;
+  defaultValue: Date;
 }) {
-  const [date, setDate] = React.useState<Date>();
+  const [date, setDate] = React.useState<Date>(defaultValue);
 
   return (
     <Popover>
