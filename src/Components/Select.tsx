@@ -8,15 +8,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { SearchFilter, useSearchFilter } from "./Context";
+import { useSearchFilter } from "./Context";
 
 export function Select() {
-  const { setFilter } = useSearchFilter();
+  const { filter, updateSearchParams } = useSearchFilter();
 
   return (
     <ShadcnSelect
+      defaultValue={filter?.source}
       onValueChange={(value) =>
-        setFilter((f: SearchFilter) => ({ ...f, source: value }))
+        updateSearchParams({ ...filter, source: value as Sources })
       }
     >
       <SelectTrigger className="w-[180px]">
