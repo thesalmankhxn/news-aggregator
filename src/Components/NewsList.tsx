@@ -74,7 +74,7 @@ const NewsList = () => {
       <div className="w-full overflow-hidden relative min-h-[500px] rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-slate-300 to-gray-200">
         <div className="max-h-[600px] scrollbar overflow-y-auto">
           <ResponsiveMasonry
-            columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+            columnsCountBreakPoints={{ 350: 1, 900: 2, 1200: 3, 1400: 4 }}
           >
             <Masonry>
               {data?.articles?.map((x, i) => (

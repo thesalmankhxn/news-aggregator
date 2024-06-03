@@ -6,7 +6,7 @@ type PropType = {
 
 const ArticleCard = ({ data }: PropType) => {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5">
+    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5 mr-4">
       <div className="h-[150px] w-full bg-zinc-600 rounded-t-lg">
         <img className="rounded-t-lg h-[150px]" src={data?.urlToImage} alt="" />
       </div>
