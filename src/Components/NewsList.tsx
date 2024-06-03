@@ -6,6 +6,9 @@ import { DatePicker } from "./DatePicker";
 import { CATEGORY_OPTIONS, SOURCE_OPTIONS } from "@/Constants";
 import { useState } from "react";
 import ArticleCard from "./ArticleCard";
+import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
+
+import { data } from "@/Constants/DemoData";
 
 const NewsList = () => {
   const [inputValue, setInputValue] = useState<string>("");
@@ -66,10 +69,16 @@ const NewsList = () => {
       </div>
 
       <div className="w-full overflow-hidden relative min-h-[500px] rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-slate-300 to-gray-200">
-        <div className="grid grid-cols-auto-min-max gap-4">
-          {[{}, {}, {}, {}].map((x, i) => (
-            <ArticleCard key={i} />
-          ))}
+        <div className="max-h-[600px] scrollbar overflow-y-auto">
+          <ResponsiveMasonry
+            columnsCountBreakPoints={{ 350: 1, 750: 2, 900: 3 }}
+          >
+            <Masonry>
+              {data?.articles?.map((x, i) => (
+                <ArticleCard key={i} data={x} />
+              ))}
+            </Masonry>
+          </ResponsiveMasonry>
         </div>
       </div>
     </div>

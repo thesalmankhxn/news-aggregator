@@ -1,22 +1,23 @@
-const ArticleCard = () => {
+import { Article } from "@/api/Models";
+
+type PropType = {
+  data: Article;
+};
+
+const ArticleCard = ({ data }: PropType) => {
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5">
       <div className="h-[150px] w-full bg-zinc-600 rounded-t-lg">
-        <img
-          className="rounded-t-lg"
-          src="/docs/images/blog/image-1.jpg"
-          alt=""
-        />
+        <img className="rounded-t-lg h-[150px]" src={data?.urlToImage} alt="" />
       </div>
       <div className="p-5">
         <a href="#">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-            Noteworthy technology acquisitions 2021
+            {data?.title}
           </h5>
         </a>
         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
+          {data?.description}
         </p>
         <a
           href="#"
