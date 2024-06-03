@@ -1,14 +1,13 @@
 import { FilterQueryParams } from "@/Helpers";
-import { Sources } from "@/api/Models";
+import { Category, Sources } from "@/api/Models";
 import React, { createContext, useContext, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 export type SearchFilter = {
-  query?: string;
-  category?: string;
+  query: string;
+  category: Category;
   source: Sources;
-  date?: string;
-  keyword?: string;
+  date: string;
 };
 
 type SearchFilterCtx = {
@@ -29,7 +28,7 @@ export const SearchFilterProvider = ({
   const [filter, setFilter] = useState<SearchFilter | null>(null);
 
   const updateSearchParams = (changeFilter?: SearchFilter) => {
-    const params = FilterQueryParams(changeFilter ?? filter);
+    const params = FilterQueryParams(changeFilter);
     changeFilter && setFilter((prev) => ({ ...prev, ...changeFilter }));
     setSearchParams(params);
   };

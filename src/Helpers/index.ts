@@ -1,13 +1,7 @@
 export const FilterQueryParams = (queryParams: any) => {
-  let params: { [index: string]: any } = { ...queryParams } as Object;
-  const paramKeys = Object.keys(params);
-
-  // Removes empty query params
-  paramKeys.map((key) => {
-    if (typeof params[key] !== "boolean" && !params[key]) {
-      delete params[key];
-    }
-  });
-
-  return params;
+  return Object.fromEntries(
+    Object.entries(queryParams).filter(
+      ([_, value]) => value !== undefined && value !== null && value !== ""
+    )
+  );
 };

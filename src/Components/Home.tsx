@@ -6,7 +6,7 @@ import { Sources } from "@/api/Models";
 
 const Home = () => {
   return (
-    <section className={cn(PageLayoutCN.sectionContainer, "!pt-16")}>
+    <section className={cn(PageLayoutCN.sectionContainer, "!pt-16 h-full")}>
       <div className="text-center text-6xl min-md:text-7xl font-semibold relative">
         <h2 className="mb-4 relative z-50 inline-block">
           A world of <span className="text-underline-gradient">journalism</span>
@@ -16,7 +16,7 @@ const Home = () => {
           The stories you need to hear. Everywhere you want to listen.
         </h2>
 
-        <div className="absolute w-full -top-5">
+        <div className="absolute w-full -top-5 md:hidden">
           <Globe />
         </div>
       </div>

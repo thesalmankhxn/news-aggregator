@@ -4,19 +4,19 @@ import Home from "./Components/Home";
 import NotFound from "./Components/NotFound";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
-import NewsDetail from "./Components/NewsDetail";
+import NewsList from "./Components/NewsList";
 import { SearchFilterProvider } from "./Components/Context";
 
 function App() {
   return (
     <Router>
       <SearchFilterProvider>
-        <main className="relative bg-gray-2 min-h-screen flex flex-col">
+        <main className="relative bg-gray-2 min-h-screen h-full flex flex-col">
           <div className="h-full">
             <Navbar />
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/news" element={<NewsDetail />} />
+              <Route path="/news" element={<NewsList />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>

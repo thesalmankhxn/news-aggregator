@@ -1,4 +1,3 @@
-import { Sources } from "@/api/Models";
 import {
   Select as ShadcnSelect,
   SelectContent,
@@ -8,27 +7,34 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useSearchFilter } from "./Context";
 
-export function Select() {
-  const { filter, updateSearchParams } = useSearchFilter();
+type SelectProps = {
+  options: { label: string; value: any }[];
+  onChange: (value: string) => void;
+  placeholder: string;
+  defaultValue?: string;
+};
 
+export function Select({
+  options,
+  onChange,
+  placeholder,
+  defaultValue,
+}: SelectProps) {
+  console.log(defaultValue);
   return (
-    <ShadcnSelect
-      defaultValue={filter?.source}
-      onValueChange={(value) =>
-        updateSearchParams({ ...filter, source: value as Sources })
-      }
-    >
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select source" />
+    <ShadcnSelect defaultValue={defaultValue} onValueChange={onChange}>
+      <SelectTrigger className="w-full">
+        <SelectValue placeholder={placeholder || "Select"} />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
           <SelectLabel>Select a source</SelectLabel>
-          <SelectItem value={Sources.news}>News</SelectItem>
-          <SelectItem value={Sources.nyTimes}>The New York Times</SelectItem>
-          <SelectItem value={Sources.guardian}>The Guardian</SelectItem>
+          {options?.map((opt) => (
+            <SelectItem key={opt.label} value={opt.value}>
+              {opt.label}
+            </SelectItem>
+          ))}
         </SelectGroup>
       </SelectContent>
     </ShadcnSelect>

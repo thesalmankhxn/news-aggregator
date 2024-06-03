@@ -17,6 +17,9 @@ module.exports = {
       },
     },
     extend: {
+      gridTemplateColumns: {
+        "auto-min-max": "repeat(auto-fit, minmax(290px, 1fr))",
+      },
       screens: {
         "4xl": { min: "1481px" },
         xxxl: { max: "1480px" },
