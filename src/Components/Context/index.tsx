@@ -1,13 +1,17 @@
 import { FilterQueryParams } from "@/Helpers";
+import useRunOnce from "@/Helpers/useRunOnce";
 import { Category, Sources } from "@/api/Models";
+import { format } from "date-fns";
 import React, { createContext, useContext, useState } from "react";
+import { useLocation, useMatch } from "react-router";
 import { useSearchParams } from "react-router-dom";
 
 export type SearchFilter = {
   query: string;
   category: Category;
   source: Sources;
-  date: string;
+  from: string;
+  to: string;
 };
 
 type SearchFilterCtx = {
@@ -25,7 +29,27 @@ export const SearchFilterProvider = ({
   children: React.ReactNode;
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [filter, setFilter] = useState<SearchFilter | null>(null);
+
+  const source = searchParams.get("source");
+  // const category = searchParams.get("category");
+  const from = searchParams.get("from");
+  const to = searchParams.get("to");
+  const query = searchParams.get("query");
+
+  const params = FilterQueryParams({
+    source,
+    from: from || format(new Date(), "yyyy-MM-dd"),
+    to: to || format(new Date(), "yyyy-MM-dd"),
+    query,
+  });
+
+  const [filter, setFilter] = useState<SearchFilter | null>(
+    params as SearchFilter
+  );
+
+  useRunOnce(() => {
+    updateSearchParams(params as SearchFilter);
+  });
 
   const updateSearchParams = (changeFilter?: SearchFilter) => {
     const params = FilterQueryParams(changeFilter);

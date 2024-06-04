@@ -1,9 +1,9 @@
 import { Category, Sources } from "@/api/Models";
 
 export const SOURCE_OPTIONS = [
-  { label: "News API", value: Sources.news },
-  { label: "The New York Times", value: Sources.nyTimes },
-  { label: "The Guardian", value: Sources.guardian },
+  { label: "News API", value: Sources.NEWS },
+  { label: "The New York Times", value: Sources.NYT },
+  { label: "The Guardian", value: Sources.GUARDIAN },
 ];
 
 export const CATEGORY_OPTIONS = [

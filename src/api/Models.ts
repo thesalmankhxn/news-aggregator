@@ -7,10 +7,57 @@ export default interface Response<T> {
 }
 
 export enum Sources {
-  news = "news",
-  nyTimes = "ny-times",
-  guardian = "guardian",
+  NYT = "NYT",
+  GUARDIAN = "GUARDIAN",
+  NEWS = "NEWS",
 }
+
+export const categories = {
+  NYT: [
+    "world",
+    "politics",
+    "technology",
+    "science",
+    "health",
+    "sports",
+    "arts",
+    "fashion",
+    "food",
+    "travel",
+    "opinion",
+    "business",
+    "books",
+  ],
+  GUARDIAN: [
+    "world",
+    "politics",
+    "technology",
+    "science",
+    "health",
+    "sport",
+    "culture",
+    "fashion",
+    "food",
+    "travel",
+    "commentisfree",
+    "business",
+    "books",
+  ],
+  NEWS: [
+    "bbc-news",
+    "cnn",
+    "the-verge",
+    "bbc-sport",
+    "reuters",
+    "the-new-york-times",
+    "the-guardian-uk",
+    "al-jazeera-english",
+    "buzzfeed",
+    "engadget",
+    "wired",
+    "techcrunch",
+  ],
+};
 
 export enum Category {
   business = "business",

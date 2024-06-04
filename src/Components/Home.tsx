@@ -39,7 +39,7 @@ const NewsApiProviders = [
       "Locate articles and breaking news headlines from news sources and blogs across the web with our JSON API.",
     image: "",
     authorAvatar: "",
-    source: Sources.news,
+    source: Sources.NEWS,
   },
   {
     author: "The New York Times",
@@ -49,7 +49,7 @@ const NewsApiProviders = [
       "Locate articles and breaking news headlines from news sources and blogs across the web with our JSON API.",
     image: "",
     authorAvatar: "",
-    source: Sources.nyTimes,
+    source: Sources.NYT,
   },
   {
     author: "The GUARDIAN",
@@ -59,7 +59,7 @@ const NewsApiProviders = [
       "Locate articles and breaking news headlines from news sources and blogs across the web with our JSON API.",
     image: "",
     authorAvatar: "",
-    source: Sources.guardian,
+    source: Sources.GUARDIAN,
   },
 ];
 

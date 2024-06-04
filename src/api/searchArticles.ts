@@ -7,32 +7,34 @@ import { FilterQueryParams } from "@/Helpers";
 
 export const searchArticles = async (params: SearchFilter) => {
   switch (params.source) {
-    case Sources.nyTimes:
+    case Sources.NYT:
       return await searchNYT(
         FilterQueryParams({
           query: params.query,
-          begin_date: params?.date?.replace(/-/g, ""),
-          end_date: params?.date?.replace(/-/g, ""),
+          begin_date: params?.from?.replace(/-/g, ""),
+          end_date: params?.to?.replace(/-/g, ""),
           facet_field: params.category ? "section_name" : undefined,
           facet_filter: !!params.category,
         })
       );
-    case Sources.guardian:
+    case Sources.GUARDIAN:
       return await searchGuardian(
         FilterQueryParams({
           query: params.query,
-          from_date: params?.date,
-          to_date: params?.date,
+          from_date: params?.from,
+          to_date: params?.to,
           section: params.category,
         })
       );
-    case Sources.news:
+    case Sources.NEWS:
       return await searchNews(
         FilterQueryParams({
           query: params.query,
-          from: params?.date,
-          to: params?.date,
-          sources: params.category,
+          from: params?.from,
+          to: params?.to,
+          category: params.category,
+          sortBy: "popularity",
+          sources: "bbc-news",
         })
       );
     default:

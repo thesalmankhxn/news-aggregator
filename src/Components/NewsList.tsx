@@ -12,14 +12,9 @@ import { data } from "@/Constants/DemoData";
 import { searchArticles } from "@/api/searchArticles";
 
 const NewsList = () => {
-  const { filter, updateSearchParams, searchParams } = useSearchFilter();
+  const { filter, updateSearchParams } = useSearchFilter();
 
-  const source = searchParams.get("source");
-  const category = searchParams.get("category");
-  const date = searchParams.get("date");
-  const query = searchParams.get("query");
-
-  const [inputValue, setInputValue] = useState<string>(query || "");
+  const [inputValue, setInputValue] = useState<string>(filter?.query || "");
   const [articles, setArticles] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
@@ -56,8 +51,8 @@ const NewsList = () => {
     updateSearchParams({
       query: "",
       category: "",
-      source: "",
-      date: "",
+      from: "",
+      to: "",
     });
   };
 
@@ -79,17 +74,27 @@ const NewsList = () => {
           options={SOURCE_OPTIONS}
           onChange={handleSourceSelect}
           placeholder={"Select Source"}
-          defaultValue={source}
+          defaultValue={filter?.source}
         />
         <Select
-          defaultValue={category}
+          defaultValue={filter?.category}
           options={CATEGORY_OPTIONS}
           onChange={handleCategorySelect}
           placeholder={"Select Category"}
         />
         <DatePicker
-          selectDate={(date: string) => updateSearchParams({ ...filter, date })}
-          defaultValue={date}
+          selectDate={(date: string) =>
+            updateSearchParams({ ...filter, from: date })
+          }
+          defaultValue={filter?.from}
+          placeHolder="From"
+        />
+        <DatePicker
+          selectDate={(date: string) =>
+            updateSearchParams({ ...filter, to: date })
+          }
+          defaultValue={filter?.to}
+          placeHolder="To"
         />
 
         <div className="flex">
