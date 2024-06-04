@@ -26,6 +26,10 @@ export const searchArticles = async (params: ArticleSearchParams) => {
       description: article.snippet,
       url: article.web_url,
       date: article.pub_date,
+      image:
+        article?.multimedia?.length > 0
+          ? `https://www.nytimes.com/${article?.multimedia?.[0]?.url}`
+          : null,
     }));
   } catch (error) {
     console.error("Error fetching articles:", error);

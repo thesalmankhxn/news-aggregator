@@ -12,7 +12,7 @@ const Home = () => {
           A world of <span className="text-underline-gradient">journalism</span>
           .
         </h2>
-        <h2 className="text-4xl pb-20 relative z-50 inline-block">
+        <h2 className="text-4xl pb-20 relative z-50 inline-block md:pb-0">
           The stories you need to hear. Everywhere you want to listen.
         </h2>
 

@@ -11,8 +11,8 @@ export const searchArticles = async (params: SearchFilter) => {
       return await searchNYT(
         FilterQueryParams({
           query: params.query,
-          begin_date: params?.from?.replace(/-/g, ""),
-          end_date: params?.to?.replace(/-/g, ""),
+          begin_date: params.from?.replace(/-/g, ""),
+          end_date: params.to?.replace(/-/g, ""),
           facet_field: params.category ? "section_name" : undefined,
           facet_filter: !!params.category,
         })
@@ -21,8 +21,8 @@ export const searchArticles = async (params: SearchFilter) => {
       return await searchGuardian(
         FilterQueryParams({
           query: params.query,
-          from_date: params?.from,
-          to_date: params?.to,
+          from_date: params.from,
+          to_date: params.to,
           section: params.category,
         })
       );
@@ -32,9 +32,8 @@ export const searchArticles = async (params: SearchFilter) => {
           query: params.query,
           from: params?.from,
           to: params?.to,
-          category: params.category,
-          sortBy: "popularity",
-          sources: "bbc-news",
+          // sortBy: "popularity",
+          sources: params.category,
         })
       );
     default:

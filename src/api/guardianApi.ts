@@ -24,6 +24,7 @@ export const searchArticles = async (params: ArticleSearchParams) => {
       description: article.fields.trailText,
       url: article.webUrl,
       date: article.webPublicationDate,
+      image: article.fields.thumbnail || null,
     }));
   } catch (error) {
     console.error("Error fetching articles:", error);

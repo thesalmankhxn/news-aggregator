@@ -1,14 +1,14 @@
+import { CATEGORY_OPTIONS } from "@/Constants";
 import { FilterQueryParams } from "@/Helpers";
 import useRunOnce from "@/Helpers/useRunOnce";
-import { Category, Sources } from "@/api/Models";
+import { Sources } from "@/api/Models";
 import { format } from "date-fns";
 import React, { createContext, useContext, useState } from "react";
-import { useLocation, useMatch } from "react-router";
 import { useSearchParams } from "react-router-dom";
 
 export type SearchFilter = {
   query: string;
-  category: Category;
+  category: string;
   source: Sources;
   from: string;
   to: string;
@@ -31,7 +31,7 @@ export const SearchFilterProvider = ({
   const [searchParams, setSearchParams] = useSearchParams();
 
   const source = searchParams.get("source");
-  // const category = searchParams.get("category");
+  const category = searchParams.get("category");
   const from = searchParams.get("from");
   const to = searchParams.get("to");
   const query = searchParams.get("query");
@@ -41,6 +41,7 @@ export const SearchFilterProvider = ({
     from: from || format(new Date(), "yyyy-MM-dd"),
     to: to || format(new Date(), "yyyy-MM-dd"),
     query,
+    category: category || CATEGORY_OPTIONS?.[source]?.[0],
   });
 
   const [filter, setFilter] = useState<SearchFilter | null>(

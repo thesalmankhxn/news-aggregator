@@ -8,15 +8,19 @@ const ArticleCard = ({ data }: PropType) => {
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mb-5 mr-4">
       <div className="h-[150px] w-full bg-zinc-600 rounded-t-lg">
-        <img className="rounded-t-lg h-[150px]" src={data?.urlToImage} alt="" />
+        <img
+          className="rounded-t-lg mx-auto object-contain h-full"
+          src={data?.urlToImage || data?.image}
+          alt=""
+        />
       </div>
       <div className="p-5">
         <a href="#">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          <h5 className="mb-2 text-2xl md:text-lg font-bold tracking-tight text-gray-900 dark:text-white">
             {data?.title}
           </h5>
         </a>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        <p className="mb-3 font-normal text-gray-700 md:text-xl">
           {data?.description}
         </p>
         <a

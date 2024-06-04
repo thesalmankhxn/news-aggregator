@@ -59,16 +59,6 @@ export const categories = {
   ],
 };
 
-export enum Category {
-  business = "business",
-  entertainment = "entertainment",
-  general = "general",
-  health = "health",
-  science = "science",
-  sports = "sports",
-  technology = "technology",
-}
-
 interface Source {
   id: string | null;
   name: string;
@@ -81,6 +71,7 @@ export interface Article {
   description: string;
   url: string;
   urlToImage: string | null;
+  image: string | null;
   publishedAt: string;
   content: string;
 }
