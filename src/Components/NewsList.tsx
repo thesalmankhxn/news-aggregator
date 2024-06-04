@@ -67,7 +67,9 @@ const NewsList = () => {
           defaultValue={filter?.source}
         />
         <Select
-          defaultValue={filter?.category || CATEGORY_OPTIONS[filter.source][0]}
+          defaultValue={
+            filter?.category || (CATEGORY_OPTIONS[filter.source][0] as any)
+          }
           options={CATEGORY_OPTIONS[filter.source]}
           onChange={handleCategorySelect}
           placeholder={"Select Category"}

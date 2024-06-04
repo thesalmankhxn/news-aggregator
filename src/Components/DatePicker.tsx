@@ -20,7 +20,7 @@ export function DatePicker({
   defaultValue: string;
   placeHolder?: string;
 }) {
-  const [date, setDate] = React.useState<Date>(defaultValue);
+  const [date, setDate] = React.useState<Date>(defaultValue as any);
 
   return (
     <Popover>
@@ -44,7 +44,7 @@ export function DatePicker({
         <Calendar
           mode="single"
           selected={date}
-          onSelect={(d: string) => {
+          onSelect={(d: any) => {
             const formattedDate = format(new Date(d), "yyyy-MM-dd");
             setDate(d);
             selectDate(formattedDate);

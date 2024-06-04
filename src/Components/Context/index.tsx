@@ -55,7 +55,7 @@ export const SearchFilterProvider = ({
   const updateSearchParams = (changeFilter?: SearchFilter) => {
     const params = FilterQueryParams(changeFilter);
     changeFilter && setFilter((prev) => ({ ...prev, ...changeFilter }));
-    setSearchParams(params);
+    setSearchParams(params as any);
   };
 
   console.log(filter, "Filters");
