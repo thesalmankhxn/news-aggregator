@@ -1,7 +1,7 @@
 import { PageLayoutCN } from "@/Layouts";
 import { Input } from "@/components/ui/input";
 import { Select } from "./Select";
-import { useSearchFilter } from "./Context";
+import { SearchFilter, useSearchFilter } from "./Context";
 import { DatePicker } from "./DatePicker";
 import { CATEGORY_OPTIONS, SOURCE_OPTIONS } from "@/Constants";
 import { useState } from "react";
@@ -9,6 +9,7 @@ import ArticleCard from "./ArticleCard";
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 
 import { data } from "@/Constants/DemoData";
+import { searchArticles } from "@/api/searchArticles";
 
 const NewsList = () => {
   const { filter, updateSearchParams, searchParams } = useSearchFilter();
@@ -19,6 +20,24 @@ const NewsList = () => {
   const query = searchParams.get("query");
 
   const [inputValue, setInputValue] = useState<string>(query || "");
+  const [articles, setArticles] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  const handleSearch = async () => {
+    setLoading(true);
+    try {
+      const results = await searchArticles({
+        ...filter,
+        query: inputValue,
+      } as SearchFilter);
+      setArticles(results);
+    } catch (error) {
+      console.error("Error searching articles:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  console.log(articles, "ARTICLES");
 
   const handleSourceSelect = (value: any) => {
     updateSearchParams({ ...filter, source: value });
@@ -30,6 +49,16 @@ const NewsList = () => {
 
   const handleSubmit = () => {
     updateSearchParams({ ...filter, query: inputValue });
+    handleSearch();
+  };
+
+  const handleClear = () => {
+    updateSearchParams({
+      query: "",
+      category: "",
+      source: "",
+      date: "",
+    });
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +67,7 @@ const NewsList = () => {
 
   return (
     <div className={PageLayoutCN.sectionContainer}>
-      <div className="flex flex-wrap gap-4 mb-8">
+      <div className="grid grid-cols-3 xxmd:grid-cols-2 gap-4 mb-8">
         <Input
           name="query"
           placeholder="Type your query"
@@ -60,15 +89,24 @@ const NewsList = () => {
         />
         <DatePicker
           selectDate={(date: string) => updateSearchParams({ ...filter, date })}
-          defaultValue={new Date(date)}
+          defaultValue={date}
         />
 
-        <button
-          onClick={handleSubmit}
-          className="h-[40px] bg-[#000] text-white rounded-md w-full"
-        >
-          Search
-        </button>
+        <div className="flex">
+          <button
+            onClick={handleSubmit}
+            className="h-[40px] bg-[#000] text-white rounded-l-md w-full"
+          >
+            Search
+          </button>
+
+          <button
+            onClick={handleClear}
+            className="h-[40px] w-16 bg-red-700 text-white rounded-r-md"
+          >
+            Clear
+          </button>
+        </div>
       </div>
 
       <div className="w-full overflow-hidden relative min-h-[500px] rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-slate-300 to-gray-200">

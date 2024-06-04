@@ -21,7 +21,6 @@ export function Select({
   placeholder,
   defaultValue,
 }: SelectProps) {
-  console.log(defaultValue);
   return (
     <ShadcnSelect defaultValue={defaultValue} onValueChange={onChange}>
       <SelectTrigger className="w-full">
